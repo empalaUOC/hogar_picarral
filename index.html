@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacio Digital y Cultural Compartido</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #f0f8ff;
+            --text-color: #333;
+            --accent-color: #e11d48;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        main {
+            padding: 2rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+        .gallery-item h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        .gallery-item button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .gallery-item button:hover {
+            background-color: var(--accent-color);
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .form-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h3 {
+            margin-bottom: 1rem;
+        }
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .form-section form label {
+            font-weight: bold;
+        }
+        .form-section form input, .form-section form textarea, .form-section form button {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-section form button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+        }
+        .form-section form button:hover {
+            background-color: var(--accent-color);
+        }
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .activity-table th, .activity-table td {
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        .activity-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .gym {
+            background-color: #ffcccc;
+        }
+        .art {
+            background-color: #ccffcc;
+        }
+        .reading {
+            background-color: #ccccff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Espacio Digital y Cultural Compartido</h1>
+        <nav>
+            <ul>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#calendario">Calendario</a></li>
+                <li><a href="#colaboracion">Colaboración</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Galería del Centro -->
+        <section id="galeria">
+            <h2>Galería del Centro</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="biblioteca.jpeg" alt="Biblioteca" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="navidad.jpeg" alt="Decoración Navideña" onclick="openModal(this)">
+                </div>
+            </div>
+            <div id="modal" class="modal" onclick="closeModal()">
+                <img id="modal-image" src="" alt="">
+            </div>
+
+            <!-- Galería de Historias -->
+            <h2>Galería de Historias</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="IMG_6504.jpeg" alt="Gloria y Antonia">
+                    <h3>Gloria y Antonia</h3>
+                    <p>Conexión a través de la danza y la comunidad.</p>
+                    <button onclick="window.location.href='gloria_antonia.html'">Leer Más</button>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_6488.jpeg" alt="Gonzalo">
+                    <h3>Gonzalo</h3>
+                    <p>Encuentra amistad y propósito en el billar.</p>
+                    <button onclick="window.location.href='gonzalo.html'">Leer Más</button>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_6501.jpeg" alt="Miguel">
+                    <h3>Miguel</h3>
+                    <p>Pasión por el billar y la comunidad.</p>
+                    <button onclick="window.location.href='miguel.html'">Leer Más</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendario de Actividades -->
+        <section id="calendario">
+            <h2>Calendario de Actividades</h2>
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th>Hora</th>
+                        <th>Actividad</th>
+                        <th>Inscribirse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="gym">
+                        <td>Lunes</td>
+                        <td>9:00 - 10:00</td>
+                        <td>Gimnasia</td>
+                        <td><button>Inscribirse</button></td>
+                    </tr>
+                    <tr class="art">
+                        <td>Martes</td>
+                        <td>10:00 - 12:00</td>
+                        <td>Pintura</td>
+                        <td><button>Inscribirse</button></td>
+                    </tr>
+                    <tr class="reading">
+                        <td>Miércoles</td>
+                        <td>11:00 - 12:30</td>
+                        <td>Lectura</td>
+                        <td><button>Inscribirse</button></td>
+                    </tr>
+                    <tr class="art">
+                        <td>Jueves</td>
+                        <td>15:00 - 16:00</td>
+                        <td>Manualidades</td>
+                        <td><button>Inscribirse</button></td>
+                    </tr>
+                    <tr class="gym">
+                        <td>Viernes</td>
+                        <td>8:00 - 9:00</td>
+                        <td>Yoga</td>
+                        <td><button>Inscribirse</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Colaboración de Voluntarios -->
+        <section id="colaboracion">
+            <h2>Colaboración de Voluntarios</h2>
+            <div class="form-section">
+                <h3>Formulario de Inscripción</h3>
+                <form action="#" method="POST">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Espacio Digital y Cultural Compartido. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = element.src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
